@@ -76,9 +76,9 @@ def search(grid, start_yx, goal_yx):
         print('Neighbors:')
         print('-'*40)
         for nbr in nbrs:
-            new_g = g.get(curr, g_inf) + dist_yx(curr, nbr)
+            new_g = g.get(curr, g_inf) + dist_yx(curr, nbr) * grid[nbr[0]][nbr[1]] * 10
             print(f'g.get(curr, g_inf) = {g.get(curr, g_inf)}')
-            print(f'dist_yx(curr, nbr) = {dist_yx(curr, nbr)}')
+            print(f'dist_yx(curr, nbr) = {dist_yx(curr, nbr) * grid[nbr[0]][nbr[1]]}')
             print(f'New G {curr}-{nbr} = {new_g}')
             if new_g < g.get(nbr, g_inf):
                 cameFrom[nbr] = curr
@@ -99,11 +99,11 @@ def search(grid, start_yx, goal_yx):
 if __name__ == '__main__':
 
     grid = [
-            [0, -1, 0, 0, 0, 0],  # 0
-            [0, -1, 0, 0, 0, 0],  # 1
-            [0, -1, 0, 0, 0, 0],  # 2
-            [0, -1, 0, 0, -1, 0], # 3
-            [0, 0, 0, 0, -1, 0],  # 4
+            [0, 1, 0, 0, 0, 0],  # 0
+            [0, 1, 0, 0, 0, 0],  # 1
+            [0, 1, 0, 0, 0, 0],  # 2
+            [0, 1, 0, 0, 1, 0],  # 3
+            [0, 0, 0, 0, 1, 0],  # 4
         #    0  1  2  3  4  5
             ]
 
